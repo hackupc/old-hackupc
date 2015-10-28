@@ -1,0 +1,23 @@
+{
+  "name": "hackupc",
+  "description": "The best student hackathon in Spain!",
+  "main": "",
+  "authors": [
+    "Antoni Virós Martín <ani300@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "~3.3.5",
+    "font-awesome": "fontawesome#~4.4.0"
+  }
+}
