@@ -2,8 +2,12 @@
   "name": "HackUPC",
   "version": "0.0.1",
   "author": "Antoni Virós <ani300@gmail.com>",
+  "scripts": {
+    "build:landing": "browserify js/landing.js > public/js/landing.js"
+  },
   "devDependencies": {
     "autoprefixer": "^6.0.3",
+    "browserify": "^12.0.1",
     "gulp": "^3.9.0",
     "gulp-bower": "0.0.10",
     "gulp-notify": "^2.2.0",
@@ -11,5 +15,9 @@
     "gulp-ruby-sass": "^2.0.5",
     "gulp-sourcemaps": "^1.6.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "game-of-life-logic": "^1.0.0",
+    "imgdye": "^1.0.0"
+  }
 }
