@@ -18,7 +18,7 @@ def hello_world():
             url="https://us12.api.mailchimp.com/3.0/lists/2aa8d22e6b/members/",
             data=json.dumps({
                 "email_address": email,
-                "status": "unsubscribed"
+                "status": "subscribed"
             }),
             headers={
                 "Content-Type": "application/json",
