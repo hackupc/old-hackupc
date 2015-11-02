@@ -39,7 +39,7 @@ gulp.task('css', function() {
         return "Error: " + error.message;
       }))
     .pipe(sourcemaps.init())
-    .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
+    //.pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) ]))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./public/css'));
 });

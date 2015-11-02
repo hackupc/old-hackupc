@@ -109,6 +109,16 @@ function onWindowResize () {
 
   headerActions.style.top = (headerTargetY + header.height + 2 * CELL_EDGE) + 'px'
   headerActions.style.left = headerTargetX + 'px'
+  var w = window.innerWidth;
+  var h = window.innerHeight;
+
+  console.log('hai')
+  //this part resizes the canvas but keeps ratio the same
+  renderer.view.style.width = w + "px";
+  renderer.view.style.height = h + "px";
+
+  //this part adjusts the ratio:
+  renderer.resize(w,h);
 }
 window.onresize = onWindowResize
 onWindowResize()
