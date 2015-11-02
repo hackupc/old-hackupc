@@ -2,6 +2,7 @@
 public/js
 
 # Sass
+public/css
 .sass-cache
 *.map
 
