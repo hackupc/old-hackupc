@@ -24,7 +24,7 @@
       <label for="emailInput">Come to the moon with us:</label>
       <br>
       <input id="emailInput" placeholder="<your email address>">
-      <button onclick="$.ajax({url:'http://hackupc.com/mailsubscribe, data: {email: $('#emailInput').val()}})">MOON</button>
+      <button onclick="$.ajax({method:'POST', url:'http://78.62.225.78/mailsubscribe', data: {email: $('#emailInput').val()}})">MOON</button>
     </section>
     <script src="js/landing.js"></script>
   </body>
