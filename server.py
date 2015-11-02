@@ -7,7 +7,7 @@ app = Flask(__name__)
 cors = CORS(app)
 
 
-@app.route('/', methods=['POST'])
+@app.route('/emailsubscribe', methods=['POST'])
 def hello_world():
     try:
         email = request.form['email']
