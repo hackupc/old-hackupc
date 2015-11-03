@@ -1,8 +1,18 @@
+notifications:
+  slack: hackupc:eU6FKGa0M2ZQj4gwa93iVbmZ
+
 language: node_js
 
 node_js:
   - "4.1"
   - "0.12"
 
-notifications:
-  slack: hackupc:eU6FKGa0M2ZQj4gwa93iVbmZ
+python:
+  - "3.5"
+
+install:
+  - pip install --user flake8
+  - npm install
+
+before_script:
+  - flake8 server.py
