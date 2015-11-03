@@ -1,7 +1,7 @@
 {
   "name": "HackUPC",
   "version": "0.0.1",
-  "author": "Antoni Virós <ani300@gmail.com>",
+  "author": "Hackers at UPC <hack@upc.edu>",
   "scripts": {
     "build:landing": "browserify js/landing.js > public/js/landing.js"
   },
