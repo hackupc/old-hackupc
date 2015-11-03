@@ -2,7 +2,7 @@ var GOF = require('game-of-life-logic')
 require('pixi.js')
 var GOFStage = require('./game-of-life-stage')
 
-var renderer = new PIXI.WebGLRenderer(window.innerWidth, window.innerHeight)
+var renderer = new PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight)
 document.body.appendChild(renderer.view)
 
 var CELL_EDGE = 10
