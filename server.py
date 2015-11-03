@@ -8,6 +8,7 @@ import json
 app = Flask(__name__)
 cors = CORS(app)
 
+
 @app.route('/mail/emailsubscribe', methods=['POST'])
 def emailsub():
     try:
@@ -31,6 +32,7 @@ def emailsub():
     except requests.exceptions.HTTPError:
         print('Error when subscribing', email)
     return 'OK'
+
 
 @app.route('/mail/sponsorsubscribe', methods=['POST'])
 def sponsorsub():
