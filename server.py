@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from flask import Flask
 from flask import request
 from flask.ext.cors import CORS
@@ -5,7 +7,6 @@ import requests
 import json
 app = Flask(__name__)
 cors = CORS(app)
-
 
 @app.route('/mail/emailsubscribe', methods=['POST'])
 def emailsub():
