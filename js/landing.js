@@ -4,7 +4,6 @@ require('pixi.js')
 var GOFStage = require('./game-of-life-stage')
 
 var renderer = new PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight) // eslint-disable-line new-cap
-document.body.appendChild(renderer.view)
 
 var CELL_EDGE = 10
 var CELLS_X = Math.ceil(window.innerWidth / CELL_EDGE)
@@ -95,3 +94,5 @@ function renderLoop () {
   }
 }
 requestAnimationFrame(renderLoop)
+renderer.render(gofStage.stage)
+document.body.appendChild(renderer.view)
