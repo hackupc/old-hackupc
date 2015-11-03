@@ -1,5 +1,5 @@
 var GOF = require('game-of-life-logic')
-require('pixi.js')
+var PIXI = require('pixi.js')
 var GOFStage = require('./game-of-life-stage')
 
 var renderer = new PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight)

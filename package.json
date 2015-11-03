@@ -19,6 +19,6 @@
   "dependencies": {
     "game-of-life-logic": "^1.0.0",
     "imgdye": "^1.0.0",
-    "pixi.js": "^3.0.8"
+    "pixi.js": "^2.0.0"
   }
 }

@@ -1,13 +1,13 @@
 var GOF = require('game-of-life-logic')
 var imgdye = require('imgdye')
-require('pixi.js')
+var PIXI = require('pixi.js')
 
 function GameOfLifeStage (gof, options) {
   this.gof = gof
   this.cellEdge = options.cellEdge
   this.colors = options.colors
 
-  this.stage = new PIXI.Container()
+  this.stage = new PIXI.Stage()
 
   var cellTexture = this.generateCellTexture()
   this.colors = this.colors.map(function (color) {
