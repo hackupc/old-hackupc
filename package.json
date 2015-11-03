@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "author": "Hackers at UPC <hack@upc.edu>",
   "scripts": {
-    "build:landing": "browserify js/landing.js > public/js/landing.js"
+    "build:landing": "browserify js/landing.js > public/js/landing.js",
+    "lint": "standard js/**",
+    "test": "npm run lint && gulp && npm run build:landing"
   },
   "devDependencies": {
     "autoprefixer": "^6.0.3",
@@ -13,7 +15,8 @@
     "gulp-notify": "^2.2.0",
     "gulp-postcss": "^6.0.1",
     "gulp-ruby-sass": "^2.0.5",
-    "gulp-sourcemaps": "^1.6.0"
+    "gulp-sourcemaps": "^1.6.0",
+    "standard": "^5.3.1"
   },
   "license": "MIT",
   "dependencies": {

@@ -6,21 +6,36 @@
 html, body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
-#headerActions {
-  position: absolute;
+canvas {
+  // crips-edges for retina screen
+  -ms-interpolation-mode: nearest-neighbor; // IE
+  image-rendering: pixelated;   // Chrome, Opera, Android browsers
+  image-rendering: -moz-crisp-edges;    // Firefox
+  image-rendering: -webkit-crisp-edges; // iOS/OSX Safari
+  image-rendering: crisp-edges;         // Just in case
+}
+header {
+  position: fixed;
   top: 0px;
   left: 0px;
+  width: 80%;
+  max-width: 620px;
 
-  padding-top: 20px;
+  transform: translate(0px, 0px);
+}
+
+#logo {
+  width: 100%;
+  padding-bottom: 40px;
 }
 
 label, input, button {
   font-family: 'Minecraft', sans-serif;
   font-size: 20px;
-  color: #464AF7;
-  color: #2C31F6;
+  color: #2B3DF3;
   background: transparent;
   box-shadow: none;
   border: 0;
@@ -44,7 +59,7 @@ button {
   vertical-align: top;
   margin-top: 1px;
   display: inline-block;
-  background-color: #464AF7;
+  background-color: #2B3DF3;
   padding: 6px;
   padding-bottom: 3px;
   color: white;

@@ -1,6 +1,14 @@
 # JavaScript Bundle
 public/js
 
+# Sass
+public/css
+.sass-cache
+*.map
+
+# Bower
+bower_components
+
 # Logs
 logs
 *.log
