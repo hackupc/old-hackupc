@@ -1,1 +1,4 @@
 language: node_js
+
+notifications:
+  slack: hackupc:eU6FKGa0M2ZQj4gwa93iVbmZ
