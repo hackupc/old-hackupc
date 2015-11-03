@@ -7,8 +7,8 @@ app = Flask(__name__)
 cors = CORS(app)
 
 
-@app.route('/emailsubscribe', methods=['POST'])
-def hello_world():
+@app.route('/mail/emailsubscribe', methods=['POST'])
+def emailsub():
     try:
         email = request.form['email']
     except:
@@ -29,6 +29,30 @@ def hello_world():
         print('Successfully subscribing', email)
     except requests.exceptions.HTTPError:
         print('Error when subscribing', email)
+    return 'OK'
+
+@app.route('/mail/sponsorsubscribe', methods=['POST'])
+def sponsorsub():
+    try:
+        email = request.form['email']
+    except:
+        print('Stahp')
+    try:
+        req = requests.post(
+            url="https://us12.api.mailchimp.com/3.0/lists/efa95cd4a6/members/",
+            data=json.dumps({
+                "email_address": email,
+                "status": "subscribed"
+            }),
+            headers={
+                "Content-Type": "application/json",
+                "Authorization":
+                "apikey d12bb3bb8637a277c121fee289e2db0a-us12"
+            })
+        req.raise_for_status()
+        print('Successfully subscribing sponsor', email)
+    except requests.exceptions.HTTPError:
+        print('Error when subscribing sponsor', email)
     return 'OK'
 
 if __name__ == '__main__':
