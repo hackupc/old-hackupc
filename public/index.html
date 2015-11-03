@@ -23,7 +23,7 @@
     <section id="headerActions">
       <label for="emailInput">Come to the moon with us:</label>
       <br>
-      <input id="emailInput" placeholder="<your email address>">
+      <input id="emailInput" type="email" placeholder="<your email address>">
       <button onclick="$.ajax({method:'POST', url:'http://178.62.225.78/mail/emailsubscribe', data: {email: $('#emailInput').val()}})">MOON</button>
     </section>
     <script src="js/landing.js"></script>
