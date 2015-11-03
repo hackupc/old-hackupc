@@ -5,14 +5,21 @@ var GOFStage = require('./game-of-life-stage')
 var renderer = new PIXI.WebGLRenderer(window.innerWidth, window.innerHeight)
 document.body.appendChild(renderer.view)
 
-var MAX_CELL_EDGE = Math.floor(window.innerWidth / 120)
-var CELL_EDGE = Math.min(10, MAX_CELL_EDGE)
+var CELL_EDGE = 10
 var CELLS_X = Math.ceil(window.innerWidth / CELL_EDGE)
 var CELLS_Y = Math.ceil(window.innerHeight / CELL_EDGE)
 
 var BLUE = '#2C31F6'
 
 var gof = new GOF(CELLS_X, CELLS_Y)
+// Init game of life matrix with a random state
+for (var i = 0; i < gof.height; ++i) {
+  for (var j = 0; j < gof.width; ++j) {
+    var state = Number(Math.random() > 0.9)
+    gof.setCell(i, j, state)
+  }
+}
+
 var gofStage = new GOFStage(gof, {
   cellEdge: CELL_EDGE,
   colors:[
@@ -45,6 +52,7 @@ function onWindowResize () {
   renderer.view.style.height = h + "px";
   //this part adjusts the ratio:
   renderer.resize(w,h);
+  gofStage.resize(w, h)
   repositionHeader()
 }
 window.onresize = onWindowResize

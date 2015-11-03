@@ -21,20 +21,47 @@ function GameOfLifeStage (gof, options) {
   })
 
   this.sprites = []
-  for (var i = 0; i < this.gof.height; ++i) {
-    var row = []
-    for (var j = 0; j < this.gof.width; ++j) {
-      var state = Number(Math.random() > 0.9)
-      this.gof.setCell(i, j, state)
-      var sprite = new PIXI.Sprite()
-      sprite.position.x = j * this.cellEdge
-      sprite.position.y = i * this.cellEdge
-      sprite.texture = this.colors[state]
-      this.stage.addChild(sprite)
-      row.push(sprite)
+  this.width = this.height = 0
+  this.resize(this.gof.width, this.gof.height)
+}
+
+GameOfLifeStage.prototype.resize = function GameOfLifeStage$prototype$resize (width, height) {
+  var newWidth = Math.ceil(width / this.cellEdge)
+  var newHeight = Math.ceil(height / this.cellEdge)
+
+  if (this.width < newWidth) {
+    for (var i = 0; i < this.height; ++i) {
+      var row = this.sprites[i]
+      for (var j = this.width; j < newWidth; ++j) {
+        var state = this.gof.getCell(i, j)
+        var sprite = new PIXI.Sprite()
+        sprite.position.x = j * this.cellEdge
+        sprite.position.y = i * this.cellEdge
+        sprite.texture = this.colors[state]
+        this.stage.addChild(sprite)
+        row.push(sprite)
+      }
     }
-    this.sprites.push(row)
   }
+  this.width = newWidth
+
+  if (this.height < newHeight) {
+    for (var i = this.height; i < newHeight; ++i) {
+      var row = []
+      for (var j = 0; j < this.width; ++j) {
+        var state = this.gof.getCell(i, j)
+        var sprite = new PIXI.Sprite()
+        sprite.position.x = j * this.cellEdge
+        sprite.position.y = i * this.cellEdge
+        sprite.texture = this.colors[state]
+        this.stage.addChild(sprite)
+        row.push(sprite)
+      }
+      this.sprites.push(row)
+    }
+  }
+  this.height = newHeight
+  this.forceRepaint = true
 }
 
 GameOfLifeStage.prototype.generateCellTexture = function GameOfLifeStage$prototype$generateCellTexture () {
@@ -59,20 +86,21 @@ GameOfLifeStage.prototype.generateCellTexture = function GameOfLifeStage$prototy
 
 GameOfLifeStage.prototype.renderCell = function GameOfLifeStage$prototype$renderCell (i, j) {
   var state = this.gof.getCell(i, j)
-  var oldState = this.oldMatrix && this.oldMatrix[i][j]
-  if (state === oldState) {
+  var oldState = this.oldGOF && this.oldGOF.getCell(i, j)
+  if (!this.forceRepaint && state === oldState) {
     return
   }
   this.sprites[i][j].texture = this.colors[state]
 }
 
 GameOfLifeStage.prototype.render = function GameOfLifeStage$prototype$render () {
-  for (var i = 0; i < this.gof.height; ++i) {
-    for (var j = 0; j < this.gof.width; ++j) {
+  for (var i = 0; i < this.height; ++i) {
+    for (var j = 0; j < this.width; ++j) {
       this.renderCell(i, j)
     }
   }
-  this.oldMatrix = this.gof.clone().matrix
+  this.oldGOF = this.gof.clone()
+    this.forceRepaint = false
 }
 
 module.exports = GameOfLifeStage
