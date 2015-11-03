@@ -2,6 +2,10 @@
   "name": "HackUPC",
   "version": "0.0.1",
   "author": "Hackers at UPC <hack@upc.edu>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hackupc/hackupc"
+  },
   "scripts": {
     "build:landing": "browserify js/landing.js > public/js/landing.js",
     "lint": "standard js/**",
