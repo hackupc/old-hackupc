@@ -1,4 +1,4 @@
-var GOF = require('game-of-life-logic')
+/* globals PIXI */
 var imgdye = require('imgdye')
 require('pixi.js')
 
@@ -26,15 +26,16 @@ function GameOfLifeStage (gof, options) {
 }
 
 GameOfLifeStage.prototype.resize = function GameOfLifeStage$prototype$resize (width, height) {
+  var i, j, row, state, sprite
   var newWidth = Math.ceil(width / this.cellEdge)
   var newHeight = Math.ceil(height / this.cellEdge)
 
   if (this.width < newWidth) {
-    for (var i = 0; i < this.height; ++i) {
-      var row = this.sprites[i]
-      for (var j = this.width; j < newWidth; ++j) {
-        var state = this.gof.getCell(i, j)
-        var sprite = new PIXI.Sprite()
+    for (i = 0; i < this.height; ++i) {
+      row = this.sprites[i]
+      for (j = this.width; j < newWidth; ++j) {
+        state = this.gof.getCell(i, j)
+        sprite = new PIXI.Sprite()
         sprite.position.x = j * this.cellEdge
         sprite.position.y = i * this.cellEdge
         sprite.texture = this.colors[state]
@@ -46,11 +47,11 @@ GameOfLifeStage.prototype.resize = function GameOfLifeStage$prototype$resize (wi
   this.width = newWidth
 
   if (this.height < newHeight) {
-    for (var i = this.height; i < newHeight; ++i) {
-      var row = []
-      for (var j = 0; j < this.width; ++j) {
-        var state = this.gof.getCell(i, j)
-        var sprite = new PIXI.Sprite()
+    for (i = this.height; i < newHeight; ++i) {
+      row = []
+      for (j = 0; j < this.width; ++j) {
+        state = this.gof.getCell(i, j)
+        sprite = new PIXI.Sprite()
         sprite.position.x = j * this.cellEdge
         sprite.position.y = i * this.cellEdge
         sprite.texture = this.colors[state]
@@ -100,7 +101,7 @@ GameOfLifeStage.prototype.render = function GameOfLifeStage$prototype$render () 
     }
   }
   this.oldGOF = this.gof.clone()
-    this.forceRepaint = false
+  this.forceRepaint = false
 }
 
 module.exports = GameOfLifeStage

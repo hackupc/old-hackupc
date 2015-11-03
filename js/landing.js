@@ -1,8 +1,9 @@
+/* globals PIXI, requestAnimationFrame */
 var GOF = require('game-of-life-logic')
 require('pixi.js')
 var GOFStage = require('./game-of-life-stage')
 
-var renderer = new PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight)
+var renderer = new PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight) // eslint-disable-line new-cap
 document.body.appendChild(renderer.view)
 
 var CELL_EDGE = 10
@@ -22,7 +23,7 @@ for (var i = 0; i < gof.height; ++i) {
 
 var gofStage = new GOFStage(gof, {
   cellEdge: CELL_EDGE,
-  colors:[
+  colors: [
     'white',  // dead
     '#ddd',   // alive
     BLUE // indestructible
@@ -47,11 +48,11 @@ function repositionHeader () {
 function onWindowResize () {
   var w = window.innerWidth
   var h = window.innerHeight
-  //this part resizes the canvas but keeps ratio the same
-  renderer.view.style.width = w + "px";
-  renderer.view.style.height = h + "px";
-  //this part adjusts the ratio:
-  renderer.resize(w,h);
+  // this part resizes the canvas but keeps ratio the same
+  renderer.view.style.width = w + 'px'
+  renderer.view.style.height = h + 'px'
+  // this part adjusts the ratio:
+  renderer.resize(w, h)
   gofStage.resize(w, h)
   repositionHeader()
 }
@@ -65,7 +66,7 @@ document.addEventListener('mousemove', function (e) {
   var y = e.pageY
   var cellX = Math.floor(x / CELL_EDGE)
   var cellY = Math.floor(y / CELL_EDGE)
-  if (cellX != oldCellX || cellY != oldCellY) {
+  if (cellX !== oldCellX || cellY !== oldCellY) {
     oldCellX = cellX
     oldCellY = cellY
     var state = gof.getCell(cellY, cellX)
