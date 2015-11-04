@@ -30,6 +30,11 @@ GameOfLifeStage.prototype.resize = function GameOfLifeStage$prototype$resize (wi
   var newWidth = Math.ceil(width / this.cellEdge)
   var newHeight = Math.ceil(height / this.cellEdge)
 
+  // get actual matrix size
+  this.height = this.sprites.length
+  row = this.sprites[0]
+  this.width = row && row.length || 0
+
   if (this.width < newWidth) {
     for (i = 0; i < this.height; ++i) {
       row = this.sprites[i]
@@ -43,8 +48,10 @@ GameOfLifeStage.prototype.resize = function GameOfLifeStage$prototype$resize (wi
         row.push(sprite)
       }
     }
+    // only update width before height loop/check when width < newWidth
+    // otherwise newly create rows will be shorter than existing rows
+    this.width = newWidth
   }
-  this.width = newWidth
 
   if (this.height < newHeight) {
     for (i = this.height; i < newHeight; ++i) {
@@ -61,6 +68,7 @@ GameOfLifeStage.prototype.resize = function GameOfLifeStage$prototype$resize (wi
       this.sprites.push(row)
     }
   }
+  this.width = newWidth
   this.height = newHeight
   this.forceRepaint = true
 }
