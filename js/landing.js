@@ -58,7 +58,6 @@ function onWindowResize () {
   repositionHeader()
 }
 window.onresize = onWindowResize
-onWindowResize()
 
 var oldCellX = -1
 var oldCellY = -1
@@ -98,3 +97,5 @@ function renderLoop () {
 requestAnimationFrame(renderLoop)
 renderer.render(gofStage.stage)
 document.body.appendChild(renderer.view)
+header.style.display = 'block'
+onWindowResize()
