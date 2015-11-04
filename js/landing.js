@@ -4,6 +4,7 @@ require('pixi.js')
 var GOFStage = require('./game-of-life-stage')
 
 var renderer = new PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight) // eslint-disable-line new-cap
+renderer.backgroundColor = 0xFFFFFF
 
 var CELL_EDGE = 10
 var CELLS_X = Math.ceil(window.innerWidth / CELL_EDGE)
