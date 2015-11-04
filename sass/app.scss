@@ -27,6 +27,58 @@ header {
   transform: translate(0px, 0px);
 }
 
+@media (max-height: 600px) {
+  header {
+    max-width: 400px;
+
+    #logo {
+      padding-bottom: 30px;
+    }
+  }
+}
+
+@media (min-height: 371px) and (max-height: 450px) {
+  header {
+    max-width: 350px;
+
+    #logo {
+      padding-bottom: 20px;
+    }
+
+    label, input, button {
+      font-size: 18px;
+    }
+  }
+}
+
+@media (min-height: 301px) and (max-height: 370px) {
+  header {
+    max-width: 300px;
+
+    #logo {
+      padding-bottom: 20px;
+    }
+
+    label, input, button {
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-height: 300px) {
+  header {
+    max-width: 240px;
+
+    #logo {
+      padding-bottom: 10px;
+    }
+
+    label, input, button {
+      font-size: 12px;
+    }
+  }
+}
+
 #logo {
   width: 100%;
   padding-bottom: 40px;
@@ -49,6 +101,7 @@ input {
   border-bottom: 2px solid;
   padding-left: 5px;
   padding-right: 5px;
+  max-width: 100%;
 }
 input:focus {
   background-color: #2C31F6;
