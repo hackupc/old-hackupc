@@ -35,6 +35,8 @@ function repositionHeader () {
   var height = header.clientHeight
   var x = (window.innerWidth - width) / 2
   var y = (window.innerHeight - height) / 2
+  x -= x % CELL_EDGE
+  y -= y % CELL_EDGE
   var transform = 'translate(' + x + 'px, ' + y + 'px)'
   header.style.transform = transform
   header.style.webkitTransform = transform
