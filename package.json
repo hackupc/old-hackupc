@@ -7,9 +7,9 @@
     "url": "https://github.com/hackupc/hackupc"
   },
   "scripts": {
-    "build:landing": "browserify js/landing.js > public/js/landing.js",
+    "build:landing": "gulp && browserify js/landing.js > public/js/landing.js",
     "lint": "standard js/**",
-    "test": "npm run lint && gulp && npm run build:landing"
+    "test": "npm run lint && npm run build:landing"
   },
   "devDependencies": {
     "autoprefixer": "^6.0.3",
