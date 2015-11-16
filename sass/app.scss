@@ -107,6 +107,19 @@ input {
 input:focus {
   background-color: #2C31F6;
   color: white;
+  border-color: #2B3DF3;
+  &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: white;
+  }
+  &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+     color: white;
+  }
+  &::-moz-placeholder { /* Mozilla Firefox 19+ */
+     color: white;
+  }
+  &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+     color: white;
+  }
 }
 
 button {
@@ -125,4 +138,3 @@ button:focus, button:hover {
   border-bottom-width: 4px;
   margin-top: 3px;
 }
-
