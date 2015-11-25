@@ -10,7 +10,6 @@
     <link rel="icon" href="../../favicon.ico">
     <link rel="stylesheet" type="text/css" href="css/app.css">
     <title>HackUPC 2016</title>
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -19,13 +18,30 @@
   </head>
 
   <body>
+  <script>
+    function post() {
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', encodeURI('http://178.62.225.78/mail/emailsubscribe'));
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          alert('User\'s name is ' + xhr.responseText);
+        }
+        else {
+          alert('Request failed.  Returned status of ' + xhr.status);
+        }
+      };
+      var email = document.getElementById('email');
+      xhr.send(encodeURI('email='+ email.value));
+    }
+  </script>
     <header>
       <img id="logo" src="images/hackupc-logo@2x.png">
       <br>
       <label for="email">Come to the moon with us:</label>
       <br>
       <input id="email" type="email" placeholder="<your email address>">
-      <button onclick="$.ajax({method:'POST', url:'http://178.62.225.78/mail/emailsubscribe', data: {email: $('#email').val()}})">MOON</button>
+      <button onclick="post()">MOON</button>
     </header>
     <script src="js/landing.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
